@@ -1,6 +1,7 @@
 $regfile = "m8def.dat"
 $crystal = 1000000
 
+'neue änderung zum github pull test
 
 'LED output
 MotorAr Alias Portc.5
