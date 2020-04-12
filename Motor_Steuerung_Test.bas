@@ -27,15 +27,16 @@ config int1 = falling
 enable int1
 
 'PWM LED
-Pwm1 Alias Portb.1
+Pwm1 Alias Portb.3
 Config Pwm1 = Output
-Config Timer1 =Pwm, Pwm = 8, Compare A Pwm = Clear Up, Prescale = 1
+'Config Timer1 =Pwm, Pwm = 8, Compare A Pwm = Clear Up, Prescale = 1  'für PortB.1...
+Config Timer2 = Pwm, Prescale = 1, Compare Pwm = Clear Down
 
 Enable Interrupts
 
 MotorAr = 1
 MotorAl = 0
-compare1a = 255
+Ocr2 = 255  'aus ; 0= an
 
 Do
 
@@ -47,8 +48,8 @@ End
 On_int0:
 
    'pwm up
-   if Compare1a <= 235 then
-      compare1a = compare1a + 20
+   if Ocr2 <= 235 then
+      Ocr2 = Ocr2 + 20
    end if
 
 Return
@@ -56,8 +57,8 @@ Return
 On_int1:
 
    'pwm down
-   if Compare1a >= 20 then
-      Compare1a = compare1a - 20
+   if Ocr2 >= 20 then
+      Ocr2 = Ocr2 - 20
    End if
 
 
