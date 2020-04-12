@@ -3,40 +3,33 @@ $crystal = 1000000
 
 'neue Ã¤nderung zum github pull test
 
-'LED output
+'Motor Output Pin
 MotorAr Alias Portc.5
 Config MotorAr = Output
 MotorAl Alias Portc.4
 Config MotorAl = Output
 
+'Input Pin
+Nacht Alias PinC.3
+Config Nacht = Input
+Spin Alias PinC.2
+Config Spin = Input
 
-'Interrupt Taster1
-Taster1 Alias Pind.2
-Config Taster1 = Input
-Taster1 = 1
-On Int0 On_int0
-Config Int0 = Falling
-Enable Int0
 
-'Interrupt Tater2
-Taster2 Alias Pind.3
-config Taster2= Input
-Taster2 = 1
-On Int1 On_int1
-config int1 = falling
-enable int1
+'Timer1 as timer
+Config Timer1 = Timer, Prescale =64
 
-'PWM LED
+
+'Timer2 as PWM
 Pwm1 Alias Portb.3
 Config Pwm1 = Output
 'Config Timer1 =Pwm, Pwm = 8, Compare A Pwm = Clear Up, Prescale = 1  'für PortB.1...
 Config Timer2 = Pwm, Prescale = 1, Compare Pwm = Clear Down
 
-Enable Interrupts
 
 MotorAr = 1
 MotorAl = 0
-Ocr2 = 255  'aus ; 0= an
+Ocr2 = 255  '255= aus ; 0= an
 
 Do
 
